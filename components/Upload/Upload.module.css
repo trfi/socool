@@ -1,0 +1,9 @@
+.avatar-uploader > div {
+  width: 128px;
+  height: 128px;
+}
+
+.cover-uploader > div {
+  width: 450px;
+  height: 128px;
+}
