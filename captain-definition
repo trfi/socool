@@ -2,8 +2,7 @@
   "schemaVersion": 2,
   "dockerfileLines": [
     "FROM node:alpine AS deps", 
-    "RUN apk add --no-cache libc6-compat", 
-    "RUN apk add --no-cache git",
+    "RUN apk add --no-cache libc6-compat git",
     "WORKDIR /app",
     "COPY package.json yarn.lock ./",
     "RUN yarn install --frozen-lockfile",
