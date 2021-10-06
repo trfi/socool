@@ -27,7 +27,6 @@
     "react-feather": "^2.0.9",
     "react-hook-form": "^7.17.0",
     "react-moralis": "^0.2.4",
-    "styled-jsx": "^3.4.5",
     "swr": "^1.0.1"
   },
   "devDependencies": {
