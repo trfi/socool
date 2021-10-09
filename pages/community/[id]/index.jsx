@@ -1,19 +1,19 @@
-import FeedComponent from '../../../components/Feed'
-import { withSession } from '../../../middlewares/session'
-import { useRouter } from 'next/router'
+import FeedComponent from '@/components/Feed'
+import { withSession } from '@/middlewares/session'
+import strapi from "../../../utils/strapi"
 
-const Feed = () => {
-  const router = useRouter()
-  const { id } = router.query
-  console.log(id);
+const Feed = ({ community }) => {
   return (
-    <FeedComponent />
+    <FeedComponent community={community} />
   )
 }
 
-export const getServerSideProps = withSession((ctx) => {
-  const { req } = ctx
+export const getServerSideProps = withSession(async ({ req, params }) => {
   const user = req.session.get('user') || null
+  
+  const community = await strapi(user).get('/communities/' + params.id)
+
+  console.log(community.data);
 
   if (!user) {
     return {
@@ -26,7 +26,8 @@ export const getServerSideProps = withSession((ctx) => {
 
   return {
     props: {
-      user
+      user,
+      community: community.data
     }
   }
 })
