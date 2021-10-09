@@ -6,11 +6,14 @@ import PostImage1 from './img/postImage1.png'
 import PostImage2 from './img/postImage2.png'
 import Image from 'next/image'
 
-const FeedComponent = () => {
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
+
+const FeedComponent = ({ community }) => {
+  console.log(community);
   return (
     <div className="flex flex-col space-y-6">
-      <div>
-        <Image src={Banner1} alt="banner1" />
+      <div className="w-full">
+        <Image className="rounded-xl" src={`${apiUrl}${community.cover.url}`} width={1000} height={190} layout='responsive' objectFit='cover' alt="banner1" />
       </div>
       <div className="bg-white flex justify-between items-center text-gray-dark py-4 px-6 rounded-3xl">
         <p>Post...</p>
